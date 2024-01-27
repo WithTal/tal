@@ -1,6 +1,5 @@
 'use client'
 import { useUser } from "@clerk/nextjs";
-import DrawerDialogDemo from "./ResizeDialog";
 import SignOut from "./auth/SignOutButton";
 import { Icons } from "./icons";
 import { ProfileDropdown } from "./profile/profile/dropdown";
