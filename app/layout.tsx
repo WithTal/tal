@@ -30,7 +30,7 @@ export default function RootLayout({ children }: any) {
         baseTheme: dark
       }
       }>
-        <body className="bg-gradient-to-r overscroll-none w-full relative from-neutral-950 via-neutral-900 to-neutral-950 min-h-screen flex flex-col">
+        <body className="bg-gradient-to-r overscroll-none w-full relative from-black/[.9] via-neutral-950 to-neutral-950 min-h-screen flex flex-col">
           <FloatingNavBar />
 
           <ThemeProvider

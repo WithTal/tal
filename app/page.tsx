@@ -1,4 +1,6 @@
 'use client'
+import Spline from '@splinetool/react-spline';
+
 import FloatingNavBar from "@/components/FloatingNavBar"
 // import DrawerDialogDemo from "@/components/ResizeDialog"
 import DrawerDialogDemo from "@/components/ResizeDialog";
@@ -180,7 +182,17 @@ export default function HomePage() {
                         </div> */}
                     </div>
                 </div >
+
+                s
             </header >
+
+            {/* <div className='absolute z-[-100]  rotate-[20] top-0 left-[-150px] w-[20%] flex justify-start'> */}
+            <div className='max-w-sm my-[-300px]  min-h-[600px]'>
+
+
+                <Spline  className='pointer-events-none	 w-48 h-48' scene="https://prod.spline.design/31EJQtFw3kiHS75z/scene.splinecode" />
+            </div>
+            {/* </div> */}
 
 
             <section className="z-100 overflow-hidden bg-gradient-to-r  text-neutral-200 border-neutral-800 shadow-xl shadow-neutral-600 border from-neutral-900/90 via-neutral-800/90 to-neutral-900/90 rounded-2xl bg-center bg-cover bg-footer-sm sm:bg-footer">
@@ -217,7 +229,7 @@ export default function HomePage() {
                     </a>
                 </div>
                 <footer className="flex flex-col items-center justify-center pb-12">
-                  
+
 
                     <div className="flex justify-center mt-4 gap-x-4">
                         <a href="/legal/privacy">
@@ -231,51 +243,7 @@ export default function HomePage() {
                 </footer>
             </section>
 
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width={1014}
-                height={1014}
-                fill="none"
-                className="w-full absolute z-[-100] -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-            >
-                <rect
-                    width="982.559"
-                    height="982.559"
-                    x="15.721"
-                    y="17.452"
-                    stroke="#ECECEC"
-                    strokeWidth={2}
-                    opacity="0.2"
-                    rx="491.279"
-                />
-                <rect
-                    width="823.228"
-                    height="823.228"
-                    x="95.386"
-                    y="97.118"
-                    stroke="#ECECEC"
-                    strokeWidth={2}
-                    opacity="0.2"
-                    rx="411.614"
-                />
-                <circle cx={507} cy={507} r={507} fill="url(#circle-bg_svg__a)" />
-                <circle cx="116.9" cy="377.544" r="7.793" fill="#44403C" />
-                <circle cx="765.479" cy="188.772" r="7.793" fill="#44403C" />
-                <circle cx="671.093" cy="884.977" r="7.793" fill="#44403C" />
-                <defs>
-                    <radialGradient
-                        id="circle-bg_svg__a"
-                        cx={0}
-                        cy={0}
-                        r={1}
-                        gradientTransform="rotate(89.968 -.141 507.141) scale(521.204)"
-                        gradientUnits="userSpaceOnUse"
-                    >
-                        <stop stopColor="#0A1010" />
-                        <stop offset={1} stopColor="#131415" stopOpacity="0.56" />
-                    </radialGradient>
-                </defs>
-            </svg>
+
         </div >
 
 

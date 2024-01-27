@@ -27,6 +27,9 @@ import TeamSwitcher from "./components/team-switcher"
 import { UserNav } from "./components/user-nav"
 import { Badge } from "@/components/ui/badge"
 import OnIcon from "./components/onIcon"
+import MuscleIcon from "./components/muscleicon"
+import { WellnessEntry } from "./WellnessEntry"
+import { useState } from "react"
 
 export const metadata: Metadata = {
     title: "Dashboard",
@@ -34,6 +37,10 @@ export const metadata: Metadata = {
 }
 
 export default function Dashing() {
+    const [wellnessSubmitted, setwellnessSubmitted] = useState(false)
+
+
+
     return (
         <>
             <div className="md:hidden">
@@ -171,10 +178,16 @@ export default function Dashing() {
                                             <p>
                                                 Wellnesss
                                             </p>
-                                            <button className=" animate-bounce hover:underline">
+                                            {!wellnessSubmitted ? <WellnessEntry submit={setwellnessSubmitted} />
+                                                :
+                                                <p>
+                                                    Submitted!
+                                                </p>
+                                            }
+                                            {/* <button className=" animate-bounce hover:underline">
                                                 Today's entry!
 
-                                            </button>
+                                            </button> */}
 
                                         </CardTitle>
 
@@ -207,10 +220,10 @@ export default function Dashing() {
                                             Fitbit Integration <Badge className="ml-2 bg-green-700" >Enabled!</Badge>
                                         </CardTitle>
 
-                                        <OnIcon />
+                                        <MuscleIcon />
                                     </CardHeader>
                                     <CardContent>
-                                        <div className="text-2xl font-bold">$45,231.89</div>
+                                        <div className="text-2xl font-bold">12,000 Steps</div>
                                         <p className="text-xs text-muted-foreground">
                                             +20.1% from last month
                                         </p>
