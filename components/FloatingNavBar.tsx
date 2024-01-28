@@ -45,7 +45,7 @@ export default function FloatingNavBar() {
                 </a>
                 {!isSignedIn ? <>
 
-                    <a className="md:block hidden hover:text-stone-300" href="/about">
+                    <a target="_blank" className="md:block hidden hover:text-stone-300" href="https://withtal.notion.site/Tal-3f86e14cb01841c9b8d9b8a40d7333ab?pvs=4">
                         About
                     </a>
 
