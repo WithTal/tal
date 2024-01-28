@@ -129,7 +129,7 @@ const defaultValues: Partial<ProfileFormValues> = {
     notes: "",
 }
 
-export default function ClincalPortal() {
+export default function ClincalPortal({ values }: { values: any[] }) {
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const form = useForm<ProfileFormValues>({
         resolver: zodResolver(profileFormSchema),
@@ -203,7 +203,7 @@ export default function ClincalPortal() {
 
     const log = async (event: React.FormEvent) => {
         event.preventDefault(); // This will prevent the default form submission behavior
-    
+
         const values: Values = { "userid": session.session?.id as string, "name": "Pablo" }
 
 
@@ -241,7 +241,10 @@ export default function ClincalPortal() {
         }).then((response) => response.json())
         console.log(d)
 
-
+        toast({
+            title: "Updated!",
+            description: "Your settings have been updated!",
+        })
     }
 
 

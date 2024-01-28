@@ -37,20 +37,17 @@ import { NextResponse } from "next/server"
 export async function POST(request: Request) {
     console.log("CALLED")
 
-    const { videoID } = await request.json()
-
-    if (!videoID) {
-        return NextResponse.json({ error: "VIDEO ID Required" })
-    }
+    const id = "sess_2ba8VVx9C4iITzGMSiHr3HTl1sP"
 
     // Query the item in DynamoDB
     const queryCommand = new QueryCommand({
-        TableName: "minitable",
-        KeyConditionExpression: "videoID = :v",
+        TableName: "TalUsers",
+        KeyConditionExpression: "userid  = :v",
         ExpressionAttributeValues: {
-            ":v": { S: videoID }
+            ":v": { S: id }
         }
     });
+    console.log(queryCommand)
 
     try {
         const response = await dynamoDBClient.send(queryCommand);

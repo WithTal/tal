@@ -29,7 +29,7 @@ import {
 } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
 import { toast } from "@/components/ui/use-toast"
-import { FormEvent, useState } from "react"
+import { FormEvent, useEffect, useState } from "react"
 import { Title } from "@radix-ui/react-toast";
 import { Separator } from "@/components/ui/separator"
 import { Label } from "@/components/ui/label"
@@ -133,7 +133,7 @@ const defaultValues: Partial<ProfileFormValues> = {
     notes: "",
 }
 
-export function Notify() {
+export function Notify({ values }: { values: any }) {
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const form = useForm<ProfileFormValues>({
         resolver: zodResolver(profileFormSchema),
@@ -236,9 +236,35 @@ export function Notify() {
             body: JSON.stringify(values)
         }).then((response) => response.json())
         console.log(d)
-
+        toast({
+            title: "Updated!",
+            description: "Your settings have been updated!",
+        })
 
     }
+
+
+    // const formFields = ['name1', 'name2', 'name3', 'phone1', 'phone2', 'phone3', 'instagram', 'username', 'socialMedia'];
+
+    // useEffect(() => {
+    //     if (values && values.items) {
+    //         // Create a new object with the desired format
+    //         const defaultValues = values.items.reduce<Record<string, any>>((obj, item) => {
+    //             if (Object.keys(item).length > 0) { // checks the item is not empty
+    //                 Object.entries(item).forEach(([key, value]) => {
+    //                     if (formFields.includes(key)) { // check if the form contains the key
+    //                         obj[key] = value['S']; // if true, add the key-value to the object
+    //                     }
+    //                 });
+    //             }
+    //             return obj;
+    //         }, {});
+
+    //         form.reset({ ...defaultValues }); // set the default form values 
+    //     }
+    // }, [values, form]);
+
+
 
 
 

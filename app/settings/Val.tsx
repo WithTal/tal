@@ -91,7 +91,7 @@ const defaultValues: Partial<ProfileFormValues> = {
 
 
 
-export function Comprehendability() {
+export function Comprehendability({ values }: { values: any}){
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const form = useForm<ProfileFormValues>({
     resolver: zodResolver(profileFormSchema),
@@ -141,6 +141,10 @@ export function Comprehendability() {
     }).then((response) => response.json())
     console.log(d)
 
+    toast({
+      title: "Updated!",
+      description: "Your settings have been updated!",
+    })
 
   }
 

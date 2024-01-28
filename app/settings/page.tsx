@@ -1,29 +1,15 @@
-'use client'
+import Home from "./pagepage";
 
-import Image from "next/image";
-import { useState } from "react";
-import SettingsLayout from "./Settingslayout";
-import { Comprehendability } from "./Val";
-import { Notify } from "./Notify";
-import ClincalPortal from "./ClinicalPortal";
-
-export default function Home() {
-
-  const [formIndex, setFormIndex] = useState(0)
-  const LayoutItems = [
-    // <PeerReview />,
-    <Comprehendability />,
-    <Notify />,
-    <ClincalPortal />
-  ]
-
-
+export default async function Page() {
+  const d = await fetch(process.env.HOST + "/api/query", {
+    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    // body: JSON.stringify(values)
+  }).then((response) => response.json())
+  console.log(d)
   return (
-
-    <div className="w-[95%] max-w-6xl mx-auto flex justify-center">
-      <SettingsLayout setFormIndex={setFormIndex}>
-        {LayoutItems[formIndex]}
-      </SettingsLayout>
-    </div>
-  );
+    <Home />
+  )
 }
