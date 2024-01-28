@@ -12,9 +12,9 @@ export default function Home({ values }: { values: any[] }) {
     const [formIndex, setFormIndex] = useState(0)
     const LayoutItems = [
         // <PeerReview />,
-        <Comprehendability />,
-        <Notify />,
-        <ClincalPortal />
+        <Comprehendability values={values} />,
+        <Notify values={values}/>,
+        <ClincalPortal values={values} />
     ]
 
 
