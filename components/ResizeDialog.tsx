@@ -52,9 +52,10 @@ import { Label } from "@/components/ui/label"
 
 type DrawerDialogDemoProps = {
     children: React.ReactNode;
+    index: number
 };
 
-const DrawerDialogDemo: React.FC<DrawerDialogDemoProps> = ({ children }) => {
+const DrawerDialogDemo: React.FC<DrawerDialogDemoProps> = ({ children, index }) => {
 
 
     // export function DrawerDialogDemo(<D) {
@@ -94,35 +95,89 @@ const DrawerDialogDemo: React.FC<DrawerDialogDemoProps> = ({ children }) => {
                     </Button>
                 </DialogTrigger>
                 <DialogContent className="  sm:max-w-[425px]">
-                    <DialogHeader>
-                        <DialogTitle>More features coming soon!</DialogTitle>
+                    {index == 0 && <DialogHeader>
+                        <DialogTitle className='text-2xl'>Tracking</DialogTitle>
                         <DialogDescription>
-                            Get updated when we add new things to the platform! Lots more cool stuff
+                            We track measures of your mental wellness across various modes
                         </DialogDescription>
-                        <div className="grid gap-4 py-4">
-                            <div className="grid grid-cols-4 items-center gap-4">
-                                <Label htmlFor="name" className="text-right">
-                                    Name
-                                </Label>
-                                <Input id="name" onChange={e => setNameValue(e.target.value)} value={nameValue} className="col-span-3" />
-                            </div>
-                            <div className="grid grid-cols-4 items-center gap-4">
-                                <Label htmlFor="username" className="text-right">
-                                    Email
-                                </Label>
-                                <Input id="username" onChange={e => setEmailValue(e.target.value)} value={emailValue} className="col-span-3" />
-                            </div>
-                        </div>
-                        <DialogFooter >
-                            <Button onClick={addToMailingList} type="submit">{!loading ? submitted ? "Submitted" : "Save changes" : <l-treadmill
-                                size="70"
-                                speed="1.25"
-                                color="black"
-                            ></l-treadmill>
+                        <DialogDescription className='  text-neutral-800'>
+                            <ul className='gap-y-16 '>
+                                <li>
+                                    <span className='pt-16 font-bold text-base'>Desktop App</span>: Set up our desktop app to track all your digital consumption across the web
+                                </li>
+                                <li>
+                                    <span className='mt-8 font-bold text-base'>Daily Checkin</span>: Fill out a short daily survey to track your emotions so we can correlate it with other events in your life
+                                </li>
+                                <li>
+                                    <span className='mt-8 font-bold text-base'>Integrations</span>: Connect to Fitbit, Apple Health, your calendar, so we can have more data to track
+                                </li>
+                            </ul>
+                        </DialogDescription>
+                    </DialogHeader>}
+                    {index == 1 && (
+                        <DialogHeader>
+                            <DialogTitle className='text-2xl'>Insights Dashboard</DialogTitle>
+                            <DialogDescription>
+                                Dive into your personal health and mood trends over the last 24 days.
+                            </DialogDescription>
+                            <DialogDescription className='text-neutral-800'>
+                                <ul className='gap-y-16'>
+                                    <li>
+                                        <span className='pt-16 font-bold text-base'>General Health Signals</span>: Overview of your physical and digital health metrics.
+                                    </li>
+                                    <li>
+                                        <span className='mt-8 font-bold text-base'>Mood Impact Analysis</span>: Discover how your activities correlate with mood changes.
+                                        <ul className='ml-4 mt-2'>
+                                            <li>- Likelihood of doomscrolling based on past behavior.</li>
+                                            <li>- Other mood-related trends and insights.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <span className='mt-8 font-bold text-base'>Consumption Review</span>: A detailed breakdown of your digital and physical activity in the past 24 days.
+                                    </li>
+                                    <li>
+                                        <span className='mt-8 font-bold text-base'>Enhance Tracking</span>: Options to connect with apps and devices (Fitbit, Apple Health, etc.) for more comprehensive data.
+                                    </li>
+                                    <li>
+                                        <span className='mt-8 font-bold text-base'>Daily Emotional Check-In</span>: Record your daily mood and see how it aligns with your activities and health metrics.
+                                    </li>
+                                </ul>
+                            </DialogDescription>
+                        </DialogHeader>
+                    )}
 
-                            }</Button>
-                        </DialogFooter>
-                    </DialogHeader>
+                    {index == 2 && (
+                        <DialogHeader>
+                            <DialogTitle className='text-2xl'>Interventions</DialogTitle>
+                            <DialogDescription>
+                                Proactive measures for your mental wellness, focusing on timely interventions and preventive actions.
+                            </DialogDescription>
+                            <DialogDescription className='text-neutral-800'>
+                                <ul className='gap-y-16'>
+                                    <li>
+                                        <span className='pt-16 font-bold text-base'>Notifications</span>: Automated alerts tailored to your well-being.
+                                        <ul className='ml-4 mt-2'>
+                                            <li>- Notifies your friends or family in certain scenarios.</li>
+                                            <li>- Personal reminders for self-care and wellness checks.</li>
+                                            <li>- Direct alerts to your doctor for professional guidance.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <span className='mt-8 font-bold text-base'>Prevention Tips</span>: Gentle nudges to help you avoid unhealthy habits.
+                                        <ul className='ml-4 mt-2'>
+                                            <li>- Alerts when engaging in activities that are potentially harmful.</li>
+                                            <li>- Warnings about excessive doomscrolling or social media use.</li>
+                                            <li>- Personalized messages for reassessment of current activities.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <span className='mt-8 font-bold text-base'>Custom Interventions</span>: Set up your own triggers and responses for a tailored experience.
+                                    </li>
+                                </ul>
+                            </DialogDescription>
+                        </DialogHeader>
+                    )}
+
                     {/* <ProfileForm /> */}
                 </DialogContent>
             </Dialog>

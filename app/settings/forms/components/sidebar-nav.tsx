@@ -5,17 +5,18 @@ import { usePathname } from "next/navigation"
 
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
+import { Dispatch, SetStateAction } from "react"
+
+
 
 interface SidebarNavProps extends React.HTMLAttributes<HTMLElement> {
   items: {
-    href: string
     title: string
-
   }[],
-  index: number
+  setFormIndex: Dispatch<SetStateAction<number>>
 }
 
-export function SidebarNav({ className, index, items, ...props }: SidebarNavProps) {
+export function SidebarNav({ className, setFormIndex, items, ...props }: SidebarNavProps) {
   const pathname = usePathname()
 
   return (
@@ -26,20 +27,21 @@ export function SidebarNav({ className, index, items, ...props }: SidebarNavProp
       )}
       {...props}
     >
-      {items.map((item, ind) => (
-        <Link
-          key={item.href}
-          href={item.href}
+      {items.map((item, index) => (
+        <button
+          key={index}
+          onClick={() => setFormIndex(index)}
+          // href={item.href}
           className={cn(
             buttonVariants({ variant: "ghost" }),
-            index === ind
+            index === -1
               ? "bg-muted hover:bg-muted"
               : "hover:bg-transparent hover:underline",
             "justify-start"
           )}
         >
           {item.title}
-        </Link>
+        </button>
       ))}
     </nav>
   )

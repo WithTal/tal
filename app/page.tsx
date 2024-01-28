@@ -22,7 +22,7 @@ export default function HomePage() {
                                 {/* <p className=" md:visible invisible inline-block py-3 mb-6 text-sm border rounded-full text-neutral-200 border-neutral-100 px-7">
                                     EAXY
                                 </p> */}
-                                <h1 className="text-neutral-200 w-full text-center text-xl font-semibold max-sm:text-center sm:text-5xl lg:text-7xl">
+                                <h1 className="text-neutral-200 w-full text-center text-5xl font-semibold max-sm:text-center lg:text-7xl">
                                     Tal is your mental health  <br className="hidden lg:block" />
                                     "wearable"
                                 </h1>
@@ -52,7 +52,7 @@ export default function HomePage() {
                                                     <path fill="currentColor" d="M96.06 454.35c.01 6.29 1.87 12.45 5.36 17.69l17.09 25.69a31.99 31.99 0 0 0 26.64 14.28h61.71a31.99 31.99 0 0 0 26.64-14.28l17.09-25.69a31.989 31.989 0 0 0 5.36-17.69l.04-38.35H96.01zM0 176c0 44.37 16.45 84.85 43.56 115.78c16.52 18.85 42.36 58.23 52.21 91.45c.04.26.07.52.11.78h160.24c.04-.26.07-.51.11-.78c9.85-33.22 35.69-72.6 52.21-91.45C335.55 260.85 352 220.37 352 176C352 78.61 272.91-.3 175.45 0C73.44.31 0 82.97 0 176m176-80c-44.11 0-80 35.89-80 80c0 8.84-7.16 16-16 16s-16-7.16-16-16c0-61.76 50.24-112 112-112c8.84 0 16 7.16 16 16s-7.16 16-16 16" />
                                                 </svg>
                                                 <div className="flex items-center justify-center rounded-full w-7 h-7  group-hover:bg-neutral-500 transition-background duration-300 bg-neutral-600">
-                                                    <DrawerDialogDemo>
+                                                    <DrawerDialogDemo index={0}>
                                                         <svg
                                                             stroke="currentColor"
                                                             fill="currentColor"
@@ -100,7 +100,7 @@ export default function HomePage() {
                                                     <path fill="currentColor" d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9" />
                                                 </svg>
                                                 <div className="flex items-center justify-center rounded-full w-7 h-7 group-hover:bg-neutral-500 transition-background duration-300 bg-neutral-600">
-                                                    <DrawerDialogDemo>
+                                                    <DrawerDialogDemo index={1}>
                                                         <svg
                                                             stroke="currentColor"
                                                             fill="currentColor"
@@ -141,7 +141,7 @@ export default function HomePage() {
                                             "linear-gradient(65deg, #2A2625 -21.28%, #070808 67.97%)"
                                     }}
                                 >
-                                    <DrawerDialogDemo>
+                                    <DrawerDialogDemo index={2}>
 
                                         <svg className="w-4 h-4 text-neutral-400" width="512" height="512" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
                                             <path fill="currentColor" d="M992.5 992.5q-31.5 31.5-76 31.5T841 993L608 760q-38-38-30-91L389 480q-76 61-165 96Q77 500 0 352q48-120 140.5-212T353 0q147 77 224 224q-36 90-97 165l189 189q53-8 91 30l233 233q31 31 31 75.5t-31.5 76" />
@@ -187,15 +187,15 @@ export default function HomePage() {
             </header >
 
             {/* <div className='absolute z-[-100]  rotate-[20] top-0 left-[-150px] w-[20%] flex justify-start'> */}
-            <div className='max-w-sm my-[-300px]  min-h-[600px]'>
+            <div className='md:block hidden max-w-sm w-1/ my-[-500px]  min-h-[900px]'>
 
 
-                <Spline  className='pointer-events-none	 w-48 h-48' scene="https://prod.spline.design/31EJQtFw3kiHS75z/scene.splinecode" />
+                <Spline className='pointer-events-none	 w-48 h-48' scene="https://prod.spline.design/31EJQtFw3kiHS75z/scene.splinecode" />
             </div>
             {/* </div> */}
 
 
-            <section className="z-100 overflow-hidden bg-gradient-to-r  text-neutral-200 border-neutral-800 shadow-xl shadow-neutral-600 border from-neutral-900/90 via-neutral-800/90 to-neutral-900/90 rounded-2xl bg-center bg-cover bg-footer-sm sm:bg-footer">
+            <section className="z-[10000] overflow-hidden bg-gradient-to-r  text-neutral-200 border-neutral-800 shadow-xl shadow-neutral-600 border from-neutral-900/90 via-neutral-800/90 to-neutral-900/90 rounded-2xl bg-center bg-cover bg-footer-sm sm:bg-footer">
                 <div className="container pb-12 mx-auto text-center pt-16">
                     <h2 className="mb-6 text-4xl sm:text-5xl">Get started</h2>
                     <p className="text-base 2xl:text-lg">

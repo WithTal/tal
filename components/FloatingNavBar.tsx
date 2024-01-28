@@ -16,7 +16,7 @@ export default function FloatingNavBar() {
     return (
         <div className="fixed hover:translate-y-[-1px]  transition duration-300 z-[10000] w-full  px-4 flex justify-center">
 
-            <div className=" max-w-[90%] px-4 border-neutral-900 border md:shadow-none shadow-lg shadow-neutral-800 flex items-center justify-center mt-8 text-stone-400 bg-black gap-x-9 px-9 rounded-3xl py-2.5 z-10">
+            <div className="hover:border-neutral-700 transition-border duration-500 max-w-[90%] px-4 border-neutral-900 border md:shadow-none shadow-lg shadow-neutral-800 flex items-center justify-center mt-8 text-stone-400 bg-black gap-x-9 px-9 rounded-3xl py-2.5 z-10">
                 <a href="/">
                     <p className="font-bold text-lg text-stone-200 hover:text-stone-100">
                         TAL
