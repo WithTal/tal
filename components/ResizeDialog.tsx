@@ -52,7 +52,7 @@ import { Label } from "@/components/ui/label"
 
 type DrawerDialogDemoProps = {
     children: React.ReactNode;
-    index: number
+    index?: number
 };
 
 const DrawerDialogDemo: React.FC<DrawerDialogDemoProps> = ({ children, index }) => {

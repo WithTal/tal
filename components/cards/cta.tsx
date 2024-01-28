@@ -1,6 +1,7 @@
 import { useState } from "react"
 import DrawerDialogDemo from "../ResizeDialog";
 
+// import DrawerDialogDemo from "../ResizeDialog";
 export default function CtaCard() {
     const [videoUrl, setVideoUrl] = useState("k");
 
@@ -67,7 +68,7 @@ export default function CtaCard() {
             {/* <a
                 className="inline-flex items-center justify-center px-4 py-2 rounded cursor-pointer max-w-sm mt-2 hover:text-neutral-200 text-neutral-400"
                 href="/auth/sign-in"
-            >
+            > 
                 
 
               

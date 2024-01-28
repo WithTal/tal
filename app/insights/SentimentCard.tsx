@@ -1,6 +1,6 @@
 import { useState } from "react"
-import DrawerDialogDemo from '@/components/ResizeDialog';
 
+import DrawerDialogDemo from "@/components/ResizeDialog";
 
 export default function SentimentCard() {
     const [videoUrl, setVideoUrl] = useState("k");
@@ -21,7 +21,7 @@ export default function SentimentCard() {
 
 
             
-            <DrawerDialogDemo >
+            <DrawerDialogDemo > 
                 <button
                     className="inline-flex items-center justify-center px-4 py-2 rounded cursor-pointer max-w-sm mt-2 hover:text-neutral-200 dark:hover:text-neutral-200 text-neutral-400 dark:text-neutral-400"
                     // href="/auth/sign-in"
