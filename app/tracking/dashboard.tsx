@@ -52,7 +52,7 @@ export default function Dashing() {
             body: JSON.stringify({ "user_id": session.session?.id })
 
         }).then((response) => response.json())
-        const websiteUrls = d.results.map((result) => result.website_url);
+        const websiteUrls = d.results.map((result: any) => result.website_url);
         setValues(websiteUrls);
 
     }
