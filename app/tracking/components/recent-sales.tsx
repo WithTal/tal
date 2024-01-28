@@ -4,7 +4,9 @@ import {
   AvatarImage,
 } from "@/components/ui/avatar"
 
-export function RecentSales() {
+export function RecentSales({ values }: { values: string[] }) {
+
+  const descriptions = ["Was this worth it?", "Are you having fun?", "Cool website!", "Interesting"]
   return (
     <div className="space-y-8">
       <div className="flex items-center">
@@ -13,12 +15,12 @@ export function RecentSales() {
           <AvatarFallback>OM</AvatarFallback>
         </Avatar>
         <div className="ml-4 space-y-1">
-          <p className="text-sm font-medium leading-none">Olivia Martin</p>
+          <p className="text-sm font-medium leading-none">{values[0]}</p>
           <p className="text-sm text-muted-foreground">
-            olivia.martin@email.com
+            {descriptions[0]}
           </p>
         </div>
-        <div className="ml-auto font-medium">+$1,999.00</div>
+        <div className="ml-auto font-medium">22x today</div>
       </div>
       <div className="flex items-center">
         <Avatar className="flex h-9 w-9 items-center justify-center space-y-0 border">
@@ -26,10 +28,10 @@ export function RecentSales() {
           <AvatarFallback>JL</AvatarFallback>
         </Avatar>
         <div className="ml-4 space-y-1">
-          <p className="text-sm font-medium leading-none">Jackson Lee</p>
-          <p className="text-sm text-muted-foreground">jackson.lee@email.com</p>
+          <p className="text-sm font-medium leading-none">{values[1]}</p>
+          <p className="text-sm text-muted-foreground"> {descriptions[0]}</p>
         </div>
-        <div className="ml-auto font-medium">+$39.00</div>
+        <div className="ml-auto font-medium">5x today</div>
       </div>
       <div className="flex items-center">
         <Avatar className="h-9 w-9">
@@ -37,12 +39,12 @@ export function RecentSales() {
           <AvatarFallback>IN</AvatarFallback>
         </Avatar>
         <div className="ml-4 space-y-1">
-          <p className="text-sm font-medium leading-none">Isabella Nguyen</p>
+          <p className="text-sm font-medium leading-none">{values[2]}</p>
           <p className="text-sm text-muted-foreground">
-            isabella.nguyen@email.com
+            {descriptions[1]}
           </p>
         </div>
-        <div className="ml-auto font-medium">+$299.00</div>
+        <div className="ml-auto font-medium">1x today</div>
       </div>
       <div className="flex items-center">
         <Avatar className="h-9 w-9">
@@ -50,10 +52,10 @@ export function RecentSales() {
           <AvatarFallback>WK</AvatarFallback>
         </Avatar>
         <div className="ml-4 space-y-1">
-          <p className="text-sm font-medium leading-none">William Kim</p>
-          <p className="text-sm text-muted-foreground">will@email.com</p>
+          <p className="text-sm font-medium leading-none">{values[3]}</p>
+          <p className="text-sm text-muted-foreground">{descriptions[2]}</p>
         </div>
-        <div className="ml-auto font-medium">+$99.00</div>
+        <div className="ml-auto font-medium">24x today</div>
       </div>
       <div className="flex items-center">
         <Avatar className="h-9 w-9">
@@ -61,10 +63,10 @@ export function RecentSales() {
           <AvatarFallback>SD</AvatarFallback>
         </Avatar>
         <div className="ml-4 space-y-1">
-          <p className="text-sm font-medium leading-none">Sofia Davis</p>
-          <p className="text-sm text-muted-foreground">sofia.davis@email.com</p>
+          <p className="text-sm font-medium leading-none">{values[4]}</p>
+          <p className="text-sm text-muted-foreground">{descriptions[3]}</p>
         </div>
-        <div className="ml-auto font-medium">+$39.00</div>
+        <div className="ml-auto font-medium">1x today</div>
       </div>
     </div>
   )

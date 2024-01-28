@@ -33,6 +33,7 @@ import { FormEvent, useState } from "react"
 import { Title } from "@radix-ui/react-toast";
 import { Separator } from "@/components/ui/separator"
 import { Label } from "@/components/ui/label"
+import { useSession } from "@clerk/nextjs"
 // import { Separator } from "../ui/separator";
 
 const profileFormSchema = z.object({
@@ -88,6 +89,8 @@ const defaultValues: Partial<ProfileFormValues> = {
   notes: "",
 }
 
+
+
 export function Comprehendability() {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const form = useForm<ProfileFormValues>({
@@ -95,6 +98,51 @@ export function Comprehendability() {
     defaultValues,
     mode: "onChange",
   })
+  const session = useSession()
+  type Values = Record<string, string>;
+
+  const log = async (event: React.FormEvent) => {
+    event.preventDefault(); // This will prevent the default form submission behavior
+
+    const values: Values = { "userid": session.session?.id as string, "name": "Pablo" }
+
+
+    const instagramElement = document.getElementById('instagramhandle') as HTMLInputElement;
+    if (instagramElement) {
+      const instagramValue = instagramElement.value;
+      // console.log(instagramValue)
+      console.log(instagramValue);
+      values['instagram'] = instagramValue;
+    } else {
+      console.log("Element not found");
+    }
+
+    const bannedwebsites = document.getElementById('banned0') as HTMLInputElement;
+    if (bannedwebsites) {
+      const bannedwebsite = bannedwebsites.value;
+      console.log(bannedwebsite);
+      values['banned'] = bannedwebsite;
+    } else {
+      console.log("Element not found");
+    }
+
+
+
+
+    console.log(values)
+
+    // setLoading(true)
+    const d = await fetch("/api/details", {
+      method: 'POST', // *GET, POST, PUT, DELETE, etc.
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(values)
+    }).then((response) => response.json())
+    console.log(d)
+
+
+  }
 
 
   const onFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -166,10 +214,9 @@ export function Comprehendability() {
   }
 
 
-
   return (
     <Form {...form}>
-      <form onSubmit={submitHandler} className="space-y-8">
+      <form onSubmit={log} className="space-y-8">
 
         <div>
           <h3 className="text-lg font-medium">Intervention Mechanisms</h3>
@@ -186,7 +233,7 @@ export function Comprehendability() {
               className="w-full">
               <FormLabel>Ex's Social Media</FormLabel>
               <FormControl>
-                <Input className="border-neutral-700" placeholder="Instagram handle" {...field} />
+                <Input id="instagramhandle" className="border-neutral-700" placeholder="Instagram handle" {...field} />
               </FormControl>
             </FormItem>
           )}
@@ -203,7 +250,7 @@ export function Comprehendability() {
 
 
                 {bannedwebsites.map((value: string, ind: number) => {
-                  return <Input key={ind} defaultValue={value} placeholder="duckduckgo.com" className="mt-4 border-neutral-700" />
+                  return <Input id={"banned" + ind} key={ind} defaultValue={value} placeholder="duckduckgo.com" className="mt-4 border-neutral-700" />
                 })}
               </div>
 

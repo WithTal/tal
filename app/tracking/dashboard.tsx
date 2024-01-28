@@ -1,3 +1,4 @@
+'use client'
 
 import { Metadata } from "next"
 import Image from "next/image"
@@ -17,7 +18,7 @@ import {
     TabsTrigger,
 } from "@/components/ui/tabs"
 
- 
+
 import { CalendarDateRangePicker } from "./components/date-range-picker"
 import { MainNav } from "./components/main-nav"
 import { Overview } from "./components/overview"
@@ -30,6 +31,7 @@ import OnIcon from "./components/onIcon"
 import MuscleIcon from "./components/muscleicon"
 import { WellnessEntry } from "./WellnessEntry"
 import { useState } from "react"
+import { useSession } from "@clerk/nextjs"
 
 export const metadata: Metadata = {
     title: "Dashboard",
@@ -39,8 +41,23 @@ export const metadata: Metadata = {
 export default function Dashing() {
     const [wellnessSubmitted, setwellnessSubmitted] = useState(false)
 
+    const session = useSession();
 
+    const getValues = async () => {
+        const d = await fetch("/api/top5", {
+            method: 'POST', // *GET, POST, PUT, DELETE, etc.
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ "user_id": session.session?.id })
 
+        }).then((response) => response.json())
+        const websiteUrls = d.results.map((result) => result.website_url);
+        setValues(websiteUrls);
+
+    }
+
+    const [values, setValues] = useState(["Reddit", "Hacker News", "Lobst.ers", "A16Z Crypto", "Twitter"])
     return (
         <>
             <div className="md:hidden">
@@ -66,7 +83,7 @@ export default function Dashing() {
                         <h2 className="text-5xl text-neutral-200 font-bold tracking-tight">Data Sources</h2>
                         <div className="flex items-center space-x-2">
                             {/* <CalendarDateRangePicker /> */}
-                            <Button>Download</Button>
+                            <Button onClick={() => getValues()}>Refresh</Button>
                         </div>
                     </div>
                     <Tabs defaultValue="main" className="w-full space-y-4">
@@ -200,11 +217,11 @@ export default function Dashing() {
                                     <CardHeader>
                                         <CardTitle>App Interactions</CardTitle>
                                         <CardDescription>
-                                            Your desktop app is all set up!
+                                            Recent visits!
                                         </CardDescription>
                                     </CardHeader>
                                     <CardContent>
-                                        <RecentSales />
+                                        <RecentSales values={values} />
                                     </CardContent>
                                 </Card>
                             </div>

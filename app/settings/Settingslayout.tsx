@@ -27,6 +27,9 @@ interface SettingsLayoutProps {
   children: React.ReactNode,
   setFormIndex: Dispatch<SetStateAction<number>>
 }
+type Values = Record<string, string>;
+
+
 
 export default function SettingsLayout({ setFormIndex, children }: SettingsLayoutProps) {
   return (

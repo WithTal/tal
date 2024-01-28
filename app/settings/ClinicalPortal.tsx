@@ -35,6 +35,7 @@ import { Separator } from "@/components/ui/separator"
 import { Label } from "@/components/ui/label"
 import { Toast } from "@/components/ui/toast"
 import { Checkbox } from "@/components/ui/checkbox"
+import { useSession } from "@clerk/nextjs"
 // import { Separator } from "../ui/separator";
 
 const profileFormSchema = z.object({
@@ -158,6 +159,10 @@ export default function ClincalPortal() {
     //   // ...
     // };
 
+    type Values = Record<string, string>;
+
+    const session = useSession();
+
 
 
     function onSubmit(data: ProfileFormValues) {
@@ -196,9 +201,53 @@ export default function ClincalPortal() {
         }
     }
 
+    const log = async (event: React.FormEvent) => {
+        event.preventDefault(); // This will prevent the default form submission behavior
+    
+        const values: Values = { "userid": session.session?.id as string, "name": "Pablo" }
+
+
+        const name1 = document.getElementById('clinicale') as HTMLInputElement;
+        if (name1) {
+            const nameValue1 = name1.value;
+            console.log(nameValue1);
+            values['clinical email'] = nameValue1;
+        } else {
+            console.log("name1 not found");
+        }
+
+        const name2 = document.getElementById('clinicalp') as HTMLInputElement;
+        if (name2) {
+            const nameValue2 = name2.value;
+            console.log(nameValue2);
+            values['clinical phone #'] = nameValue2;
+        } else {
+            console.log("name2 not found");
+        }
+
+
+
+
+
+        console.log(values)
+
+        // setLoading(true)
+        const d = await fetch("/api/details", {
+            method: 'POST', // *GET, POST, PUT, DELETE, etc.
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(values)
+        }).then((response) => response.json())
+        console.log(d)
+
+
+    }
+
+
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-8">
+            <form onSubmit={log} className="w-full space-y-8">
                 <div>
                     <h3 className="text-lg font-medium">Clinical Connection?</h3>
                     <p className="text-sm text-muted-foreground">
@@ -223,7 +272,7 @@ export default function ClincalPortal() {
                         <FormItem className="w-full">
                             <FormLabel>Medical Professional's Contact Phone</FormLabel>
                             <FormControl>
-                                <Input className="border-neutral-700" placeholder="+1 415 238 ...." {...phoneField} />
+                                <Input id="clinicalp" className="border-neutral-700" placeholder="+1 415 238 ...." {...phoneField} />
                             </FormControl>
                         </FormItem>
                     )}
@@ -235,7 +284,7 @@ export default function ClincalPortal() {
                         <FormItem className="w-full">
                             <FormLabel>Medical Professional's Email</FormLabel>
                             <FormControl>
-                                <Input type="email" className="border-neutral-700" placeholder="drwiggins@doctorland.com" {...phoneField} />
+                                <Input id="clinicale" type="email" className="border-neutral-700" placeholder="drwiggins@doctorland.com" {...phoneField} />
                             </FormControl>
                         </FormItem>
                     )}

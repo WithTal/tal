@@ -34,6 +34,7 @@ import { Title } from "@radix-ui/react-toast";
 import { Separator } from "@/components/ui/separator"
 import { Label } from "@/components/ui/label"
 import { Toast } from "@/components/ui/toast"
+import { useSession } from "@clerk/nextjs"
 // import { Separator } from "../ui/separator";
 
 const profileFormSchema = z.object({
@@ -154,6 +155,92 @@ export function Notify() {
         control: form.control,
     })
 
+    type Values = Record<string, string>;
+
+
+    const session = useSession();
+
+    const log = async (event: React.FormEvent) => {
+        event.preventDefault(); // This will prevent the default form submission behavior
+
+        const values: Values = { "userid": session.session?.id as string, "name": "Pablo" }
+
+
+
+        const name1 = document.getElementById('name1') as HTMLInputElement;
+        if (name1) {
+            const nameValue1 = name1.value;
+            console.log(nameValue1);
+            values['name1'] = nameValue1;
+        } else {
+            console.log("name1 not found");
+        }
+
+        const name2 = document.getElementById('name2') as HTMLInputElement;
+        if (name2) {
+            const nameValue2 = name2.value;
+            console.log(nameValue2);
+            values['name2'] = nameValue2;
+        } else {
+            console.log("name2 not found");
+        }
+
+        const name3 = document.getElementById('name3') as HTMLInputElement;
+        if (name3) {
+            const nameValue3 = name3.value;
+            console.log(nameValue3);
+            values['name3'] = nameValue3;
+        } else {
+            console.log("name3 not found");
+        }
+
+        const contact1 = document.getElementById('contact1') as HTMLInputElement;
+        if (contact1) {
+            const contactValue1 = contact1.value;
+            console.log(contactValue1);
+            values['contact1'] = contactValue1;
+        } else {
+            console.log("contact1 not found");
+        }
+
+        const contact2 = document.getElementById('contact2') as HTMLInputElement;
+        if (contact2) {
+            const contactValue2 = contact2.value;
+            console.log(contactValue2);
+            values['contact2'] = contactValue2;
+        } else {
+            console.log("contact2 not found");
+        }
+
+        const contact3 = document.getElementById('contact3') as HTMLInputElement;
+        if (contact3) {
+            const contactValue3 = contact3.value;
+            console.log(contactValue3);
+            values['contact3'] = contactValue3;
+        } else {
+            console.log("contact3 not found");
+        }
+
+
+
+
+
+        console.log(values)
+
+        // setLoading(true)
+        const d = await fetch("/api/details", {
+            method: 'POST', // *GET, POST, PUT, DELETE, etc.
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(values)
+        }).then((response) => response.json())
+        console.log(d)
+
+
+    }
+
+
 
     // const onSubmit = async (data: ProfileFormValues) => {
 
@@ -202,7 +289,7 @@ export function Notify() {
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-8">
+            <form onSubmit={log} className="w-full space-y-8">
                 <div>
                     <h3 className="text-lg font-medium">Notification System</h3>
                     <p className="text-sm text-muted-foreground">
@@ -217,7 +304,7 @@ export function Notify() {
                         <FormItem className="w-full">
                             <FormLabel>Emergency Contact Phone</FormLabel>
                             <FormControl>
-                                <Input className="border-neutral-700" placeholder="+1 415 238 ...." {...phoneField} />
+                                <Input id="contact1" className="border-neutral-700" placeholder="+1 415 238 ...." {...phoneField} />
                             </FormControl>
                         </FormItem>
                     )}
@@ -230,7 +317,7 @@ export function Notify() {
                         <FormItem className="w-full">
                             <FormLabel>Emergency Contact Name</FormLabel>
                             <FormControl>
-                                <Input className="border-neutral-700" placeholder="Name..." {...nameField} />
+                                <Input id="name1" className="border-neutral-700" placeholder="Name..." {...nameField} />
                             </FormControl>
                         </FormItem>
                     )}
@@ -244,7 +331,7 @@ export function Notify() {
                             className="w-full">
                             <FormLabel>Close Friend</FormLabel>
                             <FormControl>
-                                <Input className="border-neutral-700" placeholder="+1 415 238 ...." {...field} />
+                                <Input id="contact2" className="border-neutral-700" placeholder="+1 415 238 ...." {...field} />
                             </FormControl>
                         </FormItem>
                     )}
@@ -258,7 +345,7 @@ export function Notify() {
                         <FormItem className="w-full">
                             <FormLabel>Emergency Contact Name</FormLabel>
                             <FormControl>
-                                <Input className="border-neutral-700" placeholder="Name..." {...nameField} />
+                                <Input id="name2" className="border-neutral-700" placeholder="Name..." {...nameField} />
                             </FormControl>
                         </FormItem>
                     )}
@@ -272,7 +359,7 @@ export function Notify() {
                             className="w-full">
                             <FormLabel>Cheerful Friend</FormLabel>
                             <FormControl>
-                                <Input className="border-neutral-700" placeholder="+1 415 238 ...." {...field} />
+                                <Input id="contact3" className="border-neutral-700" placeholder="+1 415 238 ...." {...field} />
                             </FormControl>
                         </FormItem>
                     )}
@@ -286,7 +373,7 @@ export function Notify() {
                         <FormItem className="w-full">
                             <FormLabel>Emergency Contact Name</FormLabel>
                             <FormControl>
-                                <Input className="border-neutral-700" placeholder="Name..." {...nameField} />
+                                <Input id="name3" className="border-neutral-700" placeholder="Name..." {...nameField} />
                             </FormControl>
                         </FormItem>
                     )}
