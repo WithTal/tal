@@ -4,13 +4,17 @@ import Image from "next/image";
 import { useState } from "react";
 import SettingsLayout from "./Settingslayout";
 import { Comprehendability } from "./Val";
+import { Notify } from "./Notify";
+import ClincalPortal from "./ClinicalPortal";
 
 export default function Home() {
 
   const [formIndex, setFormIndex] = useState(0)
   const LayoutItems = [
     // <PeerReview />,
-    <Comprehendability />
+    <Comprehendability />,
+    <Notify />,
+    <ClincalPortal />
   ]
 
 

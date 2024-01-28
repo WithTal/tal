@@ -34,10 +34,7 @@ export function SidebarNav({ className, setFormIndex, items, ...props }: Sidebar
           // href={item.href}
           className={cn(
             buttonVariants({ variant: "ghost" }),
-            index === -1
-              ? "bg-muted hover:bg-muted"
-              : "hover:bg-transparent hover:underline",
-            "justify-start"
+            "hover:bg-transparent hover:underline hover:text-neutral-500 justify-start"
           )}
         >
           {item.title}

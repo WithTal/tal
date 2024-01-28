@@ -40,7 +40,7 @@ export default function HomePage() {
                             <div className="mt-12 ">
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-3">
                                     <div>
-                                        <div className="py-6 px-7 group rounded-xl "
+                                        <div className="relative py-6 px-7 group border border-neutral-800 rounded-xl "
                                             style={{
                                                 background:
                                                     "linear-gradient(65deg, #2A2625 -21.28%, #070808 67.97%)"
@@ -83,12 +83,23 @@ export default function HomePage() {
                                             </p>
                                             {/* </DrawerDialogDemo> */}
 
+                                            <div style={{
+                                                position: 'absolute',
+                                                top: '5px',
+                                                left: '5px',
+                                                width: '100%',
+                                                height: '100%',
+                                                border: '10px solid #262626',
+                                                borderRadius: 'inherit',
+                                                zIndex: '-1'
+                                            }}
+                                            ></div>
                                         </div>
                                     </div>
 
 
                                     <div>
-                                        <div className="py-6 px-7 group rounded-xl"
+                                        <div className="relative py-6 px-7 group rounded-xl"
                                             style={{
                                                 background:
                                                     "linear-gradient(65deg, #2A2625 -21.28%, #070808 67.97%)"
@@ -131,11 +142,23 @@ export default function HomePage() {
                                                 Deep analysis of your habits, catching warning signs before risks appear.
                                             </p>
                                             {/* </DrawerDialogDemo> */}
+                                            <div style={{
+                                                position: 'absolute',
+                                                top: '5px',
+                                                left: '5px',
+                                                width: '100%',
+                                                height: '100%',
+                                                border: '10px solid #262626',
+                                                borderRadius: 'inherit',
+                                                zIndex: '-1'
+                                            }}
+                                            ></div>
                                         </div>
+
                                     </div>
                                 </div>
                                 <div
-                                    className="mt-12 max-w-lg mx-auto cursor-pointer hidden pt-5 pb-8 text-neutral-200 px-7 rounded-xl sm:block"
+                                    className="relative mt-12 max-w-lg mx-auto cursor-pointer hidden pt-5 pb-8 text-neutral-200 px-7 rounded-xl sm:block"
                                     style={{
                                         background:
                                             "linear-gradient(65deg, #2A2625 -21.28%, #070808 67.97%)"
@@ -171,7 +194,17 @@ export default function HomePage() {
                                         Learn when you're heading to a dark place and notify your trusted ones. Get real-time warnings and prevention mechanisms.
                                     </p>
                                     {/* </DrawerDialogDemo> */}
-
+                                    <div style={{
+                                        position: 'absolute',
+                                        top: '5px',
+                                        left: '5px',
+                                        width: '100%',
+                                        height: '100%',
+                                        border: '10px solid #262626',
+                                        borderRadius: 'inherit',
+                                        zIndex: '-1'
+                                    }}
+                                    ></div>
                                 </div>
                             </div>
                         </div>
@@ -183,11 +216,11 @@ export default function HomePage() {
                     </div>
                 </div >
 
-                s
+
             </header >
 
             {/* <div className='absolute z-[-100]  rotate-[20] top-0 left-[-150px] w-[20%] flex justify-start'> */}
-            <div className='md:block hidden max-w-sm w-1/ my-[-500px]  min-h-[900px]'>
+            <div className='md:block hidden max-w-sm w-1/ mb-[-400px] mt-[-600px]  min-h-[900px]'>
 
 
                 <Spline className='pointer-events-none	 w-48 h-48' scene="https://prod.spline.design/31EJQtFw3kiHS75z/scene.splinecode" />
@@ -199,10 +232,10 @@ export default function HomePage() {
                 <div className="container pb-12 mx-auto text-center pt-16">
                     <h2 className="mb-6 text-4xl sm:text-5xl">Get started</h2>
                     <p className="text-base 2xl:text-lg">
-                        Ready to understand your audience?
+                        Ready to understand yourself?
                     </p>
                     <p className="text-base 2xl:text-lg mb-7">
-                        Check our tech out! (pls)
+                        Get quantified
                     </p>
                     <a
                         className="inline-flex  border border-stone-700 hover:bg-stone-800 hover:border-cyan-500 bg-stone-900 items-center justify-center px-4 py-2 rounded cursor-pointer text-white  disabled:bg-accent-400 disabled:hover:bg-accent-400 disabled:text-accent-100 !px-16 !py-3 mx-auto rounded-xl max-w-sm"

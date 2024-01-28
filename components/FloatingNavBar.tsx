@@ -3,6 +3,9 @@ import { useUser } from "@clerk/nextjs";
 import SignOut from "./auth/SignOutButton";
 import { Icons } from "./icons";
 import { ProfileDropdown } from "./profile/profile/dropdown";
+// import { use } from "react";
+import { usePathname } from 'next/navigation'
+
 
 
 export default function FloatingNavBar() {
@@ -10,6 +13,8 @@ export default function FloatingNavBar() {
 
     // if (!isLoaded || !isSignedIn) {
     //     return null;
+    const pathname = usePathname()
+
     // }
 
 
@@ -44,7 +49,7 @@ export default function FloatingNavBar() {
                         About
                     </a>
 
-                    <a className="md:block hidden hover:text-stone-300">
+                    <a href="mailto:pablosfsanchez@gmail.com" className="md:block hidden hover:text-stone-300">
                         Contact
                     </a>
                     <a href="https://twitter.com/thepablohansen">
@@ -69,14 +74,17 @@ export default function FloatingNavBar() {
 
 
                     <>
-                        <a className="md:block hidden cursor-pointer hover:text-stone-300" href="/tracking">
+                        <a className={`md:block hidden cursor-pointer hover:text-stone-300 ${pathname=="/tracking"  && "font-bold"}`} 
+                        href="/tracking">
                             Tracking
                         </a>
 
-                        <a className="md:block hidden cursor-pointer hover:text-stone-300" href="/insights">
+                        <a className={`md:block hidden cursor-pointer hover:text-stone-300 ${pathname=="/insights"  && "font-bold"}`} 
+                        href="/insights">
                             Insights
                         </a>
-                        <a className="md:block hidden cursor-pointer hover:text-stone-300 " href="/settings">
+                        <a className={`md:block hidden cursor-pointer hover:text-stone-300 ${pathname=="/settings"  && "font-bold"}`} 
+                         href="/settings">
                             Settings
                         </a>
 

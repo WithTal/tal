@@ -48,12 +48,16 @@ const profileFormSchema = z.object({
     }),
   instagram: z
     .string()
+    .startsWith("@", {
+      message: "Must beigin with @"
+    })
     .min(2, {
       message: "Title must be at least 2 characters.",
     })
     .max(30, {
       message: "Title must not be longer than 30 characters.",
-    }),
+    })
+    .optional(),
   username: z
     .string()
     .min(2, {
@@ -62,12 +66,7 @@ const profileFormSchema = z.object({
     .max(30, {
       message: "Username must not be longer than 30 characters.",
     }),
-  socialMedia: z.object({
-    instagram: z.string().optional(),
-    facebook: z.string().optional(),
-    snapchat: z.string().optional(),
-    linkedin: z.string().optional(),
-  }),
+  socialMedia: z.string().optional(),
   category: z
     .string({
       required_error: "Please select a category for your paper.",
@@ -111,6 +110,7 @@ export function Comprehendability() {
     control: form.control,
   })
 
+  const [bannedwebsites, setBannedwebsites] = useState<string[]>(["google.com"]);
 
   // const onSubmit = async (data: ProfileFormValues) => {
 
@@ -157,9 +157,20 @@ export function Comprehendability() {
     }
   }
 
+  function submitHandler(data: any) {
+    data.preventDefault()
+    toast({
+      title: "Updated!",
+      description: "Your settings have been updated!",
+    })
+  }
+
+
+
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-8">
+      <form onSubmit={submitHandler} className="space-y-8">
+
         <div>
           <h3 className="text-lg font-medium">Intervention Mechanisms</h3>
           <p className="text-sm text-muted-foreground">
@@ -173,75 +184,47 @@ export function Comprehendability() {
           render={({ field }) => (
             <FormItem
               className="w-full">
-              <FormLabel>Exes' Social Media</FormLabel>
+              <FormLabel>Ex's Social Media</FormLabel>
               <FormControl>
                 <Input className="border-neutral-700" placeholder="Instagram handle" {...field} />
               </FormControl>
             </FormItem>
           )}
         />
-       
-        <FormField
-          control={form.control}
-          name="title"
-          render={({ field }) => (
-            <FormItem
-              className="w-full">
-              <FormLabel>Exes' Social Media</FormLabel>
-              <FormControl>
-                <Input className="border-neutral-700" placeholder="Instagram handle" {...field} />
-              </FormControl>
-              <FormControl>
-                <Input className="border-neutral-700" placeholder="Facebook handle" {...field} />
-              </FormControl>
-              <FormControl>
-                <Input className="border-neutral-700" placeholder="Snapchat handle" {...field} />
-              </FormControl>
-              <FormControl>
-                <Input className="border-neutral-700" placeholder="LinkedIn handle" {...field} />
-              </FormControl>
-              <FormDescription>
-                Your paper's title, as it would show up in your publication. Tentative titles are perfectly fine, as long as they relate to the content.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+
+
         <FormField
           control={form.control}
           name="socialMedia" // This is the name for the group of fields
           render={({ field }) => (
             <FormItem className="w-full">
-              <FormLabel>Exes' Social Media</FormLabel>
+              <FormLabel>Banned websites</FormLabel>
+              <div className="w-full">
 
-              {/* Instagram Handle */}
-              <FormControl>
-                <Input
-                  className="border-neutral-700"
-                  placeholder="Instagram handle"
-                  name="instagram" // Unique name for Instagram handle
-                  value={field.value?.instagram || ''} // Accessing Instagram value
-                  onChange={field.onChange} // Using the same onChange
-                />
-              </FormControl>
 
-              {/* Facebook Handle */}
-              <FormControl>
-                <Input
-                  className="border-neutral-700"
-                  placeholder="Facebook handle"
-                  name="facebook" // Unique name for Facebook handle
-                  value={field.value?.facebook || ''} // Accessing Facebook value
-                  onChange={field.onChange} // Using the same onChange
-                />
-              </FormControl>
+                {bannedwebsites.map((value: string, ind: number) => {
+                  return <Input key={ind} defaultValue={value} placeholder="duckduckgo.com" className="mt-4 border-neutral-700" />
+                })}
+              </div>
 
-              {/* ... Repeat for other social media fields ... */}
+
+
+
+              <Button onClick={() => setBannedwebsites(web => [...web, ""])} type="button">
+                <svg className="text-neutral-800 rounded-full bg-transparent w-8 h-8" width="512" height="512" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                  <path fill="currentColor" d="M16 10c0 .553-.048 1-.601 1H11v4.399c0 .552-.447.601-1 .601c-.553 0-1-.049-1-.601V11H4.601C4.049 11 4 10.553 4 10c0-.553.049-1 .601-1H9V4.601C9 4.048 9.447 4 10 4c.553 0 1 .048 1 .601V9h4.399c.553 0 .601.447.601 1" />
+                </svg>
+              </Button>
 
               <FormDescription>
-                Your paper's title, as it would show up in your publication. Tentative titles are perfectly fine, as long as they relate to the content.
+                These are the websites you're attempting to avoid, to preseve your sanity!
               </FormDescription>
+
               <FormMessage />
+              <div className="invisible w-full h-0">
+
+                These are the websites you're attempting to avoid, to preseve your sanity! Tentative titles are perfectly fine, as long as they relate to the content.
+              </div>
             </FormItem>
           )}
         />

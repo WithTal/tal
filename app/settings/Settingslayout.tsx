@@ -18,6 +18,9 @@ const sidebarNavItems = [
   {
     title: "Notifications"
   },
+  {
+    title: "Clinical"
+  },
 ]
 
 interface SettingsLayoutProps {
