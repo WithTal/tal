@@ -220,10 +220,9 @@ export default function HomePage() {
             </header >
 
             {/* <div className='absolute z-[-100]  rotate-[20] top-0 left-[-150px] w-[20%] flex justify-start'> */}
-            <div className='md:block hidden max-w-sm w-1/ mb-[-400px] mt-[-600px]  min-h-[900px]'>
+            <div className='md:block hidden w-1/ mb-[-400px] mt-[-600px]  min-h-[900px]'>
 
-
-                <Spline className='pointer-events-none	 w-48 h-48' scene="https://prod.spline.design/31EJQtFw3kiHS75z/scene.splinecode" />
+                <Spline className='pointer-events-none	 ' scene="https://prod.spline.design/31EJQtFw3kiHS75z/scene.splinecode" />
             </div>
             {/* </div> */}
 
