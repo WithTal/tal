@@ -1,8 +1,8 @@
 'use client'
 import { useUser } from "@clerk/nextjs";
-import SignOut from "./auth/SignOutButton";
-import { Icons } from "./icons";
-import { ProfileDropdown } from "./profile/profile/dropdown";
+import SignOut from "./profile/SignOutButton";
+import { Icons } from "./ui/icons";
+import { ProfileDropdown } from "./profile/dropdown";
 // import { use } from "react";
 import { usePathname } from 'next/navigation'
 

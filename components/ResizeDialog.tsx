@@ -1,15 +1,9 @@
 
 'use client'
 
-import { treadmill } from 'ldrs'
-
-
-// Default values shown
 
 import * as React from "react"
 
-import { cn } from "@/lib/utils"
-// import { useMediaQuery } from "@/hooks/use-media-query"
 export function useMediaQuery(query: string) {
     const [value, setValue] = React.useState(false)
 
@@ -32,7 +26,7 @@ import {
     Dialog,
     DialogContent,
     DialogDescription,
-    DialogFooter,
+
     DialogHeader,
     DialogTitle,
     DialogTrigger,

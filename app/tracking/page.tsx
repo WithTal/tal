@@ -1,14 +1,16 @@
-// 'use client'
+import TrackingDash from "./TrackingDash"
 
-import Dashing from "./dashboard"
+import { Metadata } from "next";
 
-export default function DashboardPage() {
+export const metadata: Metadata = {
+    title: "Tracking- TAL",
+    description: "Set up your tracking for TAL.",
+}
+
+export default function page() {
     return (
         <div className="w-[95%] max-w-6xl mx-auto flex justify-center">
-
-            <Dashing />
-
+            <TrackingDash />
         </div >
-
     )
 }
