@@ -21,15 +21,12 @@ import MarketingHeader from '@/components/marketing/MarketingHeader';
 - Sign-in 
 - Sign-up
 
-
 */}
 
 
 
 
 export default function HomePage() {
-
-
 
 
     return (

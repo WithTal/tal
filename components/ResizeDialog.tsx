@@ -44,15 +44,15 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 
-type DrawerDialogDemoProps = {
+type DrawerDialogProps = {
     children: React.ReactNode;
     index?: number
 };
 
-const DrawerDialogDemo: React.FC<DrawerDialogDemoProps> = ({ children, index }) => {
+const DrawerDialog: React.FC<DrawerDialogProps> = ({ children, index }) => {
 
 
-    // export function DrawerDialogDemo(<D) {
+
     const [open, setOpen] = React.useState(false)
     const isDesktop = useMediaQuery("(min-width: 768px)")
 
@@ -110,102 +110,98 @@ const DrawerDialogDemo: React.FC<DrawerDialogDemoProps> = ({ children, index }) 
                     </DialogHeader>}
                     {index == 1 && (
                         <DialogHeader>
-                            <DialogTitle className='text-2xl'>Insights Dashboard</DialogTitle>
+                            <DialogTitle className='text-2xl'>Secure Insights Dashboard</DialogTitle>
                             <DialogDescription>
-                                Dive into your personal health and mood trends over the last 24 days.
+                                Your privacy is our priority. Explore your data with the assurance of top-tier security over the last 24 days.
                             </DialogDescription>
                             <DialogDescription className='text-neutral-800'>
                                 <ul className='gap-y-16'>
                                     <li>
-                                        <span className='pt-16 font-bold text-base'>General Health Signals</span>: Overview of your physical and digital health metrics.
+                                        <span className='pt-16 font-bold text-base'>End-to-End Encryption</span>: All your data is securely encrypted from your device to our servers.
                                     </li>
                                     <li>
-                                        <span className='mt-8 font-bold text-base'>Mood Impact Analysis</span>: Discover how your activities correlate with mood changes.
-                                        <ul className='ml-4 mt-2'>
-                                            <li>- Likelihood of doomscrolling based on past behavior.</li>
-                                            <li>- Other mood-related trends and insights.</li>
-                                        </ul>
+                                        <span className='mt-8 font-bold text-base'>Zero Cloud Exposure</span>: Your data never leaves your device, ensuring no exposure to the cloud.
                                     </li>
                                     <li>
-                                        <span className='mt-8 font-bold text-base'>Consumption Review</span>: A detailed breakdown of your digital and physical activity in the past 24 days.
+                                        <span className='mt-8 font-bold text-base'>Private Event Logging</span>: Every interaction is logged securely, with encryption at every step.
                                     </li>
                                     <li>
-                                        <span className='mt-8 font-bold text-base'>Enhance Tracking</span>: Options to connect with apps and devices (Fitbit, Apple Health, etc.) for more comprehensive data.
+                                        <span className='mt-8 font-bold text-base'>Secure Keylogging</span>: Keylogging is fully encrypted, guaranteeing your keystrokes remain private.
                                     </li>
                                     <li>
-                                        <span className='mt-8 font-bold text-base'>Daily Emotional Check-In</span>: Record your daily mood and see how it aligns with your activities and health metrics.
+                                        <span className='mt-8 font-bold text-base'>Data Integrity Assurance</span>: We ensure the integrity and confidentiality of your data at all times.
                                     </li>
                                 </ul>
                             </DialogDescription>
                         </DialogHeader>
+
+
                     )}
 
-                    {index == 2 && (
-                        <DialogHeader>
-                            <DialogTitle className='text-2xl'>Interventions</DialogTitle>
-                            <DialogDescription>
-                                Proactive measures for your mental wellness, focusing on timely interventions and preventive actions.
-                            </DialogDescription>
-                            <DialogDescription className='text-neutral-800'>
-                                <ul className='gap-y-16'>
-                                    <li>
-                                        <span className='pt-16 font-bold text-base'>Notifications</span>: Automated alerts tailored to your well-being.
-                                        <ul className='ml-4 mt-2'>
-                                            <li>- Notifies your friends or family in certain scenarios.</li>
-                                            <li>- Personal reminders for self-care and wellness checks.</li>
-                                            <li>- Direct alerts to your doctor for professional guidance.</li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <span className='mt-8 font-bold text-base'>Prevention Tips</span>: Gentle nudges to help you avoid unhealthy habits.
-                                        <ul className='ml-4 mt-2'>
-                                            <li>- Alerts when engaging in activities that are potentially harmful.</li>
-                                            <li>- Warnings about excessive doomscrolling or social media use.</li>
-                                            <li>- Personalized messages for reassessment of current activities.</li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <span className='mt-8 font-bold text-base'>Custom Interventions</span>: Set up your own triggers and responses for a tailored experience.
-                                    </li>
-                                </ul>
-                            </DialogDescription>
-                        </DialogHeader>
-                    )}
+
 
                     {/* <ProfileForm /> */}
                 </DialogContent>
             </Dialog>
         )
     }
-
     return (
         <Drawer open={open} onOpenChange={setOpen}>
             <DrawerTrigger className="bg-transparent dark:bg-transparent" asChild>
                 <Button className="bg-transparent dark:bg-transparent">
                     {children}
                 </Button>
-                {/* <Button variant="outline">CLICK ME</Button> */}
             </DrawerTrigger>
             <DrawerContent>
                 <DrawerHeader className="text-left">
-                    <DrawerTitle>More features coming soon!</DrawerTitle>
-                    <DrawerDescription>
-                        Get updated when we add new things to the platform! Lots more cool stuff
-                    </DrawerDescription>
-                    <div className="grid gap-4 py-4">
-                        <div className="grid grid-cols-5 items-center gap-4">
-                            <Label htmlFor="name" className="text-right">
-                                Name
-                            </Label>
-                            <Input id="name" value="Pedro Duarte" className="col-span-4" />
-                        </div>
-                        <div className="grid grid-cols-5 items-center gap-4">
-                            <Label htmlFor="username" className="text-right">
-                                Email
-                            </Label>
-                            <Input id="username" value="@peduarte" className="col-span-4" />
-                        </div>
-                    </div>
+                    {index == 0 && (
+                        <React.Fragment>
+                            <DrawerTitle>Tracking</DrawerTitle>
+                            <DrawerDescription>
+                                We track measures of your mental wellness across various modes
+                            </DrawerDescription>
+                            <DrawerDescription className='text-neutral-800'>
+                                <ul className='gap-y-16'>
+                                    <li>
+                                        <span className='pt-16 font-bold text-base'>Desktop App</span>: Set up our desktop app to track all your digital consumption across the web
+                                    </li>
+                                    <li>
+                                        <span className='mt-8 font-bold text-base'>Daily Checkin</span>: Fill out a short daily survey to track your emotions so we can correlate it with other events in your life
+                                    </li>
+                                    <li>
+                                        <span className='mt-8 font-bold text-base'>Integrations</span>: Connect to Fitbit, Apple Health, your calendar, so we can have more data to track
+                                    </li>
+                                </ul>
+                            </DrawerDescription>
+                        </React.Fragment>
+                    )}
+                    {index == 1 && (
+                        <React.Fragment>
+                            <DrawerTitle>Secure Insights Dashboard</DrawerTitle>
+                            <DrawerDescription>
+                                Your privacy is our priority. Explore your data with the assurance of top-tier security over the last 24 days.
+                            </DrawerDescription>
+                            <DrawerDescription className='text-neutral-800'>
+                                <ul className='gap-y-16'>
+                                    <li>
+                                        <span className='pt-16 font-bold text-base'>End-to-End Encryption</span>: All your data is securely encrypted from your device to our servers.
+                                    </li>
+                                    <li>
+                                        <span className='mt-8 font-bold text-base'>Zero Cloud Exposure</span>: Your data never leaves your device, ensuring no exposure to the cloud.
+                                    </li>
+                                    <li>
+                                        <span className='mt-8 font-bold text-base'>Private Event Logging</span>: Every interaction is logged securely, with encryption at every step.
+                                    </li>
+                                    <li>
+                                        <span className='mt-8 font-bold text-base'>Secure Keylogging</span>: Keylogging is fully encrypted, guaranteeing your keystrokes remain private.
+                                    </li>
+                                    <li>
+                                        <span className='mt-8 font-bold text-base'>Data Integrity Assurance</span>: We ensure the integrity and confidentiality of your data at all times.
+                                    </li>
+                                </ul>
+                            </DrawerDescription>
+                        </React.Fragment>
+                    )}
                 </DrawerHeader>
                 {/* <ProfileForm className="px-4" /> */}
                 <DrawerFooter className="pt-2">
@@ -218,4 +214,4 @@ const DrawerDialogDemo: React.FC<DrawerDialogDemoProps> = ({ children, index }) 
     )
 }
 
-export default DrawerDialogDemo;
+export default DrawerDialog
