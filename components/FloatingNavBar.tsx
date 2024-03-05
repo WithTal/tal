@@ -23,26 +23,30 @@ export default function FloatingNavBar() {
         <div className="fixed hover:translate-y-[-1px]  transition duration-300 z-[10000] w-full  px-4 flex justify-center">
 
             <div className="hover:border-neutral-700 transition-border duration-500 max-w-[90%] px-4 border-neutral-900 border md:shadow-none shadow-lg shadow-neutral-800 flex items-center justify-center mt-8 text-stone-400 bg-black gap-x-9 px-9 rounded-3xl py-2.5 z-10">
-                <Link href="/">
-                    <p className="font-bold text-lg text-stone-200 hover:text-stone-100">
-                        TAL
-                    </p>
+                {/* <Link href="/"> */}
+                <Link target="_blank" className={` ${pathname == "/" && "font-bold text-lg text-stone-200 hover:text-stone-100"} md:block hidden hover:text-stone-300`} href="https://withtal.notion.site/Tal-3f86e14cb01841c9b8d9b8a40d7333ab?pvs=4">
+
+                    {/* <p className="font-bold text-lg text-stone-200 hover:text-stone-100"> */}
+                    TAL
+                    {/* </p> */}
+                    {/* {pathname} */}
 
                 </Link>
+                
                 {!isSignedIn ? <>
 
-                    <Link target="_blank" className="md:block hidden hover:text-stone-300" href="https://withtal.notion.site/Tal-3f86e14cb01841c9b8d9b8a40d7333ab?pvs=4">
+                    <Link target="_blank" className={` ${pathname.includes("about") && "font-bold text-lg text-stone-200 hover:text-stone-100"} md:block hidden hover:text-stone-300`} href="https://withtal.notion.site/Tal-3f86e14cb01841c9b8d9b8a40d7333ab?pvs=4">
                         About
                     </Link>
 
-                    <Link target="_blank"  href="mailto:pablosfsanchez@gmail.com" className="md:block hidden hover:text-stone-300">
+                    <Link target="_blank" href="mailto:pablosfsanchez@gmail.com" className="md:block hidden hover:text-stone-300">
                         Contact
                     </Link>
-                    <Link target="_blank"  href="https://twitter.com/thepablohansen">
+                    <Link target="_blank" href="https://twitter.com/thepablohansen">
                         <Icons.twitter className="w-6 h-6 hover:text-stone-300" />
 
                     </Link>
-                    <Link  target="_blank" href="https://github.com/withtal">
+                    <Link target="_blank" href="https://github.com/withtal">
                         <svg
                             stroke="currentColor"
                             fill="currentColor"
@@ -60,17 +64,17 @@ export default function FloatingNavBar() {
 
 
                     <>
-                        <Link className={`md:block hidden cursor-pointer hover:text-stone-300 ${pathname=="/tracking"  && "font-bold"}`} 
-                        href="/tracking">
+                        <Link className={`md:block hidden cursor-pointer hover:text-stone-300 ${pathname == "/tracking" && "font-bold"}`}
+                            href="/tracking">
                             Tracking
                         </Link>
 
-                        <Link className={`md:block hidden cursor-pointer hover:text-stone-300 ${pathname=="/insights"  && "font-bold"}`} 
-                        href="/insights">
+                        <Link className={`md:block hidden cursor-pointer hover:text-stone-300 ${pathname == "/insights" && "font-bold"}`}
+                            href="/insights">
                             Insights
                         </Link>
-                        <Link className={`md:block hidden cursor-pointer hover:text-stone-300 ${pathname=="/settings"  && "font-bold"}`} 
-                         href="/settings">
+                        <Link className={`md:block hidden cursor-pointer hover:text-stone-300 ${pathname == "/settings" && "font-bold"}`}
+                            href="/settings">
                             Settings
                         </Link>
 
