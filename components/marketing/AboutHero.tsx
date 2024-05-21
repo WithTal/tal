@@ -11,7 +11,6 @@ export default function AboutHero() {
                 <div className="flex items-center justify-center w-full">
                     <div className="z-10 lg:mr-16 mt-12  max-w-3xl">
                         <HeroAbout />
-                        kk
                         {/* <div className="mt-12 ">
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-3">
                                 <FeatureCard Icon={
